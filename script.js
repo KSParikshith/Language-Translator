@@ -3,7 +3,8 @@ toText = document.querySelector(".to-text"),
 exchageIcon = document.querySelector(".exchange"),
 selectTag = document.querySelectorAll("select"),
 icons = document.querySelectorAll(".row i");
-translateBtn = document.querySelector("button"),
+translateBtn = document.querySelector(".trans"),
+clearBtn = document.querySelector(".clear"),
 
 /*selectTag.forEach((tag, id) => {
     for (let country_code in countries) {
@@ -84,4 +85,10 @@ icons.forEach(icon => {
             speechSynthesis.speak(utterance);
         }
     });
+});
+
+
+clearBtn.addEventListener("click", () => {
+    fromText.value = "";
+    toText.value = "";
 });
