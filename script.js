@@ -92,3 +92,27 @@ clearBtn.addEventListener("click", () => {
     fromText.value = "";
     toText.value = "";
 });
+
+
+
+const micButton = document.getElementById("micButton");
+
+// Initialize the SpeechRecognition API
+const recognition = new webkitSpeechRecognition();
+recognition.continuous = false;
+recognition.interimResults = true;
+recognition.lang = selectTag[0]; // Set the language (adjust as needed)
+
+micButton.addEventListener("click", () => {
+    recognition.start();
+    micButton.textContent = "Listening...";
+});
+
+recognition.onresult = (event) => {
+    const spokenText = event.results[0][0].transcript;
+    fromText.value = spokenText;
+};
+
+recognition.onend = () => {
+    micButton.textContent = "🎙️";
+};
