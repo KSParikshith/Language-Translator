@@ -1,0 +1,57 @@
+
+<div class="body">
+  <div class="header"><i class="fa fa-language" style="font-size:28px;color:rgb(43, 8, 185)"></i> Talk In Tongues - Language Translator
+    <i class="fa fa-language" style="font-size:28px;color:rgb(43, 8, 185)"></i></div>
+    <div class="container">
+    
+      <div class="wrapper">
+        <div class="text-input">
+          <textarea spellcheck="false" [(ngModel)]="fromText" placeholder="Enter text"></textarea>
+          <textarea spellcheck="false" readonly disabled [(ngModel)]="toText" placeholder="Translation"></textarea>
+        </div>
+        <ul class="controls">
+          <div id="speech-to-text">
+            <button id="micButton">🎙️</button>
+          </div>
+          <li class="row to">
+          <select id="fromLang" name="fromLang" class="form-control" [(ngModel)] = "fromLang">
+            <option value="">--Select From Language--</option>
+            <option *ngFor ="let languages of lang" [ngValue]="languages.code" [selected]="languages.code === 'auto'">{{ languages.name }}</option>
+          </select>
+          </li>
+          <li class="exchange">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-right" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M1 11.5a.5.5 0 0 0 .5.5h11.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 11H1.5a.5.5 0 0 0-.5.5m14-7a.5.5 0 0 1-.5.5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H14.5a.5.5 0 0 1 .5.5"/>
+            </svg>          
+          </li>
+          
+          <li class="row to">
+          <select id="toLang" name="toLang" class="form-control" [(ngModel)] = "toLang">
+            <option value="">--Select To Language--</option>
+            <option *ngFor ="let languages of lang" [value]="languages.code" [selected]="languages.code == 'en'">{{ languages.name }}</option>
+          </select>
+          </li>
+        </ul>
+      </div>
+      <div >
+        <button class="trans" (click)="translate()">Translate</button>
+        <button class="clear">Clear</button>
+      </div>
+
+    <!-- audio-recorder.component.html -->
+
+    <div>
+      <button id="startRecording" (click)="startRecording()">Start Recording</button>
+      <button id="stopRecording" (click)="handleRec()" disabled>Stop Recording</button>
+    </div>
+    
+    <label class="image-upload-container btn btn-bwm">
+      <span>Image URL </span>
+      <input type='text' [(ngModel)] = "img" >
+      <!--input #imageInput type="file" accept="image/*" [(ngModel)] = "img" (change)="handleImageUpload()"-->
+      <button (click)="handleImageUpload()">Transcribe Image</button>
+    </label>
+
+  </div>
+</div>
+ 
